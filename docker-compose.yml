@@ -8,8 +8,13 @@ services:
     volumes:
       - redis-data:/data
     command: '--appendonly yes'
-
-
+  mongo:
+    image: mongo:3.6.3
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+    
 volumes:
   redis-data:
-    
+  mongo-data:
