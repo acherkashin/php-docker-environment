@@ -10,6 +10,15 @@ services:
       - ./web:/home/user/www/project/web
       - /var/run/php/php7.4-fpm.sock:/var/run/php/php7.4-fpm.sock
 
+  apache:
+    image: httpd
+    ports: 
+      - 88:80
+    volumes:
+      - ./docker/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./web:/home/user/www/project/web
+      - /var/run/php/php7.4-fpm.sock:/var/run/php/php7.4-fpm.sock
+
   redis:
     image: redis:4.0.9
     ports:
