@@ -7,8 +7,7 @@ services:
       - 80:80
     volumes: 
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./web:/home/user/www/project/web
-      - /var/run/php/php7.4-fpm.sock:/var/run/php/php7.4-fpm.sock
+      - ./web:/var/www/app/web
 
   apache:
     image: httpd
@@ -16,27 +15,26 @@ services:
       - 88:80
     volumes:
       - ./docker/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
-      - ./web:/home/user/www/project/web
-      - /var/run/php/php7.4-fpm.sock:/var/run/php/php7.4-fpm.sock
+      - ./web:/var/www/app/web
+
+  php:
+    build: ./docker/php
+    volumes:
+      - ./:/var/www/app/
+    working_dir: /var/www/app
 
   redis:
     image: redis:4.0.9
-    ports:
-      - 6379:6379
     volumes:
       - redis-data:/data
     command: '--appendonly yes'
   mongo:
     image: mongo:3.6.3
-    ports:
-      - 27017:27017
     volumes:
       - mongo-data:/data/db
 
   postgres:
     image: postgres:10.12
-    ports: 
-      - 5432:5432
     environment: 
       POSTGRES_DB: postgres_db
       POSTGRES_USER: postgres
@@ -46,8 +44,6 @@ services:
 
   mysql:
     image: mysql:5.7.30
-    ports:
-      - 3306:3306
     environment: 
       MYSQL_DATABASE: mysql_db
       MYSQL_ROOT_PASSWORD: password

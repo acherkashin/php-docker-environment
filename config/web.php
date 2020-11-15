@@ -47,13 +47,13 @@ $config = [
         'postgres' => $postgres,
         'redis' => [
             'class' => yii\redis\Connection::class,
-            'hostname' => 'localhost',
+            'hostname' => 'redis',
             'port' => 6379,
             'database' => 0,
         ],
         'mongodb' => [
             'class' => \yii\mongodb\Connection::class,
-            'dsn' => 'mongodb://localhost:27017/database',
+            'dsn' => 'mongodb://mongo:27017/database',
         ],
     ],
     'params' => $params,
