@@ -7,5 +7,5 @@ RUN pecl install mongodb && docker-php-ext-enable mongodb
 RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql
 
 RUN curl -sS https://getcomposer.org/installer -o composer-setup.php && \
- php composer-setup.php --install-dir=/usr/local/bin --filename=composer && \
+ php composer-setup.php --version=1.10.5 --install-dir=/usr/local/bin --filename=composer && \
  rm composer-setup.php
