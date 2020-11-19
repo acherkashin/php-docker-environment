@@ -2,7 +2,7 @@ version: "3"
 
 services: 
   nginx:
-    image: course_nginx:ver_1
+    image: cherkalexander/docker-course:nginx
     build:
       context: .
       dockerfile: ./docker/nginx/Dockerfile_build
@@ -10,7 +10,7 @@ services:
       - 80:80
 
   apache:
-    image: course_apache:ver_1
+    image: cherkalexander/docker-course:apache
     build:
       context: .
       dockerfile: ./docker/apache/Dockerfile_build
@@ -18,7 +18,7 @@ services:
       - 88:80
 
   php:
-    image: course_php:ver_1
+    image: cherkalexander/docker-course:php
     build:
       context: .
       dockerfile: ./docker/php/Dockerfile_build
