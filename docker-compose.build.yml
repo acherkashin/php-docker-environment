@@ -9,6 +9,14 @@ services:
     ports:
       - 80:80
 
+  apache:
+    image: course_apache:ver_1
+    build:
+      context: .
+      dockerfile: ./docker/apache/Dockerfile_build
+    ports:
+      - 88:80
+
   php:
     image: course_php:ver_1
     build:

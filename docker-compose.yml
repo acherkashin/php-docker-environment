@@ -10,7 +10,7 @@ services:
       - ./web:/var/www/app/web
 
   apache:
-    image: httpd
+    image: httpd:2.4.46
     ports: 
       - 88:80
     volumes:
